@@ -1,4 +1,6 @@
-FROM  jupyter/scipy-notebook:2023-06-26
+FROM rocker/binder:4.3.1
 
-RUN mamba install --yes -c conda-forge \
-    nbgitpuller
+USER root
+RUN python3 -m pip install --no-cache nbgitpuller
+
+USER ${NB_USER}
